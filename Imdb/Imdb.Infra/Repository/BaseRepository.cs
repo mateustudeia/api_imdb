@@ -1,0 +1,47 @@
+﻿using Imdb.Domain.Entities;
+using Imdb.Infra.Context;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Imdb.Infra.Repository
+{
+    public class BaseRepository<TEntity, TKeyType> where TEntity : BaseEntity<TKeyType>
+    {
+        protected readonly ImdbContext _imdbContext;
+
+        public BaseRepository(ImdbContext imdbContext)
+        {
+            _imdbContext = imdbContext;
+        }
+
+        protected virtual void Insert(TEntity obj)
+        {
+            _imdbContext.Set<TEntity>().Add(obj);
+            _imdbContext.SaveChanges();
+        }
+        protected virtual void Update(TEntity obj)
+        {
+            _imdbContext.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _imdbContext.SaveChanges();
+        }
+
+        protected virtual void Update<TProperty>(TEntity obj, params PropertyEntry<TEntity, TProperty>[] propsToIgnore)
+        {
+            _imdbContext.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+            foreach (var item in propsToIgnore)
+                item.IsModified = false;
+
+            _imdbContext.SaveChanges();
+        }
+
+        protected virtual IList<TEntity> Select() =>
+            _imdbContext.Set<TEntity>().ToList();
+
+        protected virtual TEntity Select(int id) =>
+            _imdbContext.Set<TEntity>().Find(id);
+    }
+}
