@@ -8,7 +8,7 @@ namespace Imdb.Domain.Interfaces
     public interface IRepositoryUser
     {
         void Save(User obj);
-        void SoftDelete(User obj);
+        User GetById(int id);
         IList<User> GetAll();
     }
 }

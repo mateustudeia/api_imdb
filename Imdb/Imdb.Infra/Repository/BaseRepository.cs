@@ -28,16 +28,6 @@ namespace Imdb.Infra.Repository
             _imdbContext.SaveChanges();
         }
 
-        protected virtual void Update<TProperty>(TEntity obj, params PropertyEntry<TEntity, TProperty>[] propsToIgnore)
-        {
-            _imdbContext.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-
-            foreach (var item in propsToIgnore)
-                item.IsModified = false;
-
-            _imdbContext.SaveChanges();
-        }
-
         protected virtual IList<TEntity> Select() =>
             _imdbContext.Set<TEntity>().ToList();
 

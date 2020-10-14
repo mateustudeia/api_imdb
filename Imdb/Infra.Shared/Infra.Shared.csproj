@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Imdb.Domain\Imdb.Domain.csproj" />
-    <ProjectReference Include="..\Infra.Shared\Infra.Shared.csproj" />
   </ItemGroup>
 
 </Project>

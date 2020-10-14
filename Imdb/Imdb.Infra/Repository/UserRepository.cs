@@ -18,12 +18,13 @@ namespace Imdb.Infra.Repository
             if (obj.Id == 0)
                 base.Insert(obj);
             else
-                base.Update(obj, _imdbContext.Entry(obj).Property(prop => prop.Password));
+                base.Update(obj);
         }
-        public void SoftDelete(User obj) => 
-            base.Update(obj, _imdbContext.Entry(obj).Property(prop => prop.IsDeleted));
+        public User GetById(int id) =>
+            base.Select(id);
         public IList<User> GetAll() =>
             base.Select();
+
 
     }
 }

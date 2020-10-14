@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Imdb.Service
 {
-    class FilmeService
+    class MovieService
     {
     }
 }

@@ -9,10 +9,10 @@ namespace Imdb.Infra.Context
 {
     public class ImdbContext : DbContext
     {
-        public DbSet<User> Usuario { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host = localhost; Database = imdb; Username = imdb; Password = imdb");
+            => optionsBuilder.UseNpgsql("Host = localhost; Database = imdb_dotnet; Username = postgres; Password = postgres");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
