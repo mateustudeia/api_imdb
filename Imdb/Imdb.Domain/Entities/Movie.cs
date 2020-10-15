@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Imdb.Domain.Entities
 {
-    class Movie
+    public class Movie : BaseEntity<int>
     {
+        public string Titulo { get; }
+        public int Ano { get; }
+        public int TempoDuracao { get; }
+        public string Enredo { get; }
+        public string Diretor { get; }
+        public string Genero { get; }
     }
 }

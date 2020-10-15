@@ -17,13 +17,6 @@ namespace Infra.Shared
         public static IEnumerable<UserModel> ConvertToUsers(this IList<User> users) =>
             new List<UserModel>(users.Select(s => new UserModel(s)));
 
-        public static User ConvertUserDelete(this User user)
-        {
-            var userDeleted = new UpdateUserModel(user, true);
-
-            return userDeleted.ConvertToEntity();
-        }
-
         public static UserModel ConvertToUser(this User user) =>
             new UserModel(user);
             

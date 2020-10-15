@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Imdb.Service
+namespace Imdb.Domain.Models
 {
-    class AdministradorService
+    public class MovieFilterModel
     {
     }
 }

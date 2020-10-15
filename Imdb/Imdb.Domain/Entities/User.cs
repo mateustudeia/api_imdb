@@ -12,7 +12,7 @@ namespace Imdb.Domain.Entities
         public DateTime DateOfBirth { get; }
         public string Email { get; }
         public string Password { get; }
-        public bool IsDeleted { get; }
+        public bool IsDeleted { get; private set; }
 
         public User(CreateUserModel user) : base(0)
         {
@@ -34,5 +34,10 @@ namespace Imdb.Domain.Entities
         }
 
         public User() { }
+
+        public void DeleteUser()
+        {
+            IsDeleted = true;
+        }
     }
 }

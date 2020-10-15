@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Imdb.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/movies")]
     [ApiController]
-    public class FilmeController : ControllerBase
+    public class movieController : ControllerBase
     {
     }
 }

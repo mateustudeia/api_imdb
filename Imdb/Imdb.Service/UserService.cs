@@ -33,7 +33,8 @@ namespace Imdb.Service
         public void SoftDelete(int id)
         {
             var user = _repositoryUser.GetById(id);
-            _repositoryUser.Save(user.ConvertUserDelete());
+            user.DeleteUser();
+            _repositoryUser.Save(user);
         }
 
         public IEnumerable<UserModel> RecoverAll()
