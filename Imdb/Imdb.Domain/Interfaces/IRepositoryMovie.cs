@@ -9,7 +9,7 @@ namespace Imdb.Domain.Interfaces
     {
         void Save(Movie obj);
         void Vote(int movieId, int userId);
-        Movie GetMovieDetailsById(int id);
-        IList<Movie> GetFilteredMovie();
+        Movie GetById(int id);
+        IEnumerable<Movie> GetAll();
     }
 }

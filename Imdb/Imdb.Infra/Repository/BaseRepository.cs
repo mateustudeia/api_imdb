@@ -28,7 +28,7 @@ namespace Imdb.Infra.Repository
             _imdbContext.SaveChanges();
         }
 
-        protected virtual IList<TEntity> Select() =>
+        protected virtual IEnumerable<TEntity> Select() =>
             _imdbContext.Set<TEntity>().ToList();
 
         protected virtual TEntity Select(int id) =>

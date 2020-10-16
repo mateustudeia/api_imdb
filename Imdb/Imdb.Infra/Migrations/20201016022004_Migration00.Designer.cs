@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Imdb.Infra.Migrations
 {
     [DbContext(typeof(ImdbContext))]
-    [Migration("20201014094450_Migration00")]
+    [Migration("20201016022004_Migration00")]
     partial class Migration00
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

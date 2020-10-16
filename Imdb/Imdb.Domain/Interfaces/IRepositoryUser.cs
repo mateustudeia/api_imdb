@@ -9,6 +9,6 @@ namespace Imdb.Domain.Interfaces
     {
         void Save(User obj);
         User GetById(int id);
-        IList<User> GetAll();
+        IEnumerable<User> GetAll();
     }
 }

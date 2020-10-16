@@ -32,7 +32,8 @@ namespace Imdb.Infra.Mapping
 
             builder.Property(m => m.TempoDuracao)
                 .IsRequired()
-                .HasColumnName("tempo_duracao");
+                .HasColumnName("tempo_duracao")
+                .HasColumnType("interval");
 
             builder.Property(m => m.Enredo)
                 .IsRequired()
@@ -45,6 +46,10 @@ namespace Imdb.Infra.Mapping
             builder.Property(m => m.Genero)
                 .IsRequired()
                 .HasColumnName("genero");
+
+            builder.Property(m => m.Atores)
+                .IsRequired()
+                .HasColumnName("atores");
 
         }
     }
