@@ -29,7 +29,7 @@ namespace Imdb.Infra.Repository
         }
 
         protected virtual IEnumerable<TEntity> Select() =>
-            _imdbContext.Set<TEntity>().ToList();
+            _imdbContext.Set<TEntity>();
 
         protected virtual TEntity Select(int id) =>
             _imdbContext.Set<TEntity>().Find(id);

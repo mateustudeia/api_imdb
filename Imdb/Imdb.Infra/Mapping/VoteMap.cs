@@ -16,16 +16,30 @@ namespace Imdb.Infra.Mapping
             builder.HasKey(v => v.Id);
 
             builder
-                .Property(v => v.VoteNote)
-                .HasColumnName("vote_note");
+                .Property(v => v.Id)
+                .HasColumnName("id");
+
+            builder
+                .Property(v => v.VoteScore)
+                .HasColumnName("vote_score");
             builder
                 .HasOne(v => v.User)
                 .WithMany(u => u.VoteMovie)
                 .HasForeignKey(v => v.UserId);
+
+            builder
+                .Property(v => v.UserId)
+                .HasColumnName("user_id");
+
             builder
                 .HasOne(v => v.Movie)
                 .WithMany(v => v.VoteMovie)
                 .HasForeignKey(v => v.MovieId);
+
+            builder
+                .Property(v => v.MovieId)
+                .HasColumnName("movie_id");
+
 
 
 

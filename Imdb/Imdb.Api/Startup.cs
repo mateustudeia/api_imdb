@@ -2,9 +2,11 @@ using Imdb.Domain.Interfaces;
 using Imdb.Infra.Context;
 using Imdb.Infra.Repository;
 using Imdb.Service;
+using Imdb.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,6 +49,8 @@ namespace Imdb.Api
             services.AddScoped<IRepositoryUser, UserRepository>();
             services.AddScoped<IRepositoryMovie, MovieRepository>();
             services.AddScoped<IServiceMovie, MovieService>();
+            services.AddScoped<IServiceVote, VoteService>();
+            services.AddScoped<IRepositoryVote, VoteRepository>();
 
             services.AddControllers();
         }

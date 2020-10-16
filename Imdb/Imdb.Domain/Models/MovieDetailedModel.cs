@@ -17,15 +17,15 @@ namespace Imdb.Domain.Models
 
         public MovieDetailedModel() { }
 
-        public MovieDetailedModel(Movie movie)
+        public MovieDetailedModel(Movie movie, float average)
         {
             Titulo = movie.Titulo;
             Ano = movie.Ano;
-            TempoDuracao = movie.TempoDuracao.ToString("T(pt-BR)");
+            TempoDuracao = movie.TempoDuracao.ToString();
             Enredo = movie.Enredo;
             Diretor = movie.Diretor;
             Genero = movie.Genero;
-            AverageVote = 10;
+            AverageVote = average;
 
         }
     }

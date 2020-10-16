@@ -11,6 +11,8 @@ namespace Imdb.Api.Controllers
     {
         private readonly IServiceMovie _serviceMovie;
 
+        private readonly IServiceVote _serviceVote;
+
         public MovieController(IServiceMovie serviceMovie) =>
             _serviceMovie = serviceMovie;
 
@@ -60,11 +62,11 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpPost("registro")]
-        public IActionResult RegisterVote([FromQuery]int movieId, int userId)
+        public IActionResult RegisterVote([FromQuery]int movieId, int userId, int voteScore)
         {
             try
             {
-                _serviceMovie.RegisterVote(movieId, userId);
+                _serviceVote.RegisterVote(movieId, userId, voteScore);
 
                 return Ok(ApiConstants.MSG_GENERIC_SUCCESS);
             }

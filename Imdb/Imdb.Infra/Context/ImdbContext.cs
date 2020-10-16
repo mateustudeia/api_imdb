@@ -23,7 +23,6 @@ namespace Imdb.Infra.Context
             modelBuilder.ApplyConfiguration(new MovieMap());
             modelBuilder.ApplyConfiguration(new VoteMap());
 
-
         }
     }
 }

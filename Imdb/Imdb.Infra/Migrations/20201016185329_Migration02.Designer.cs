@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Imdb.Infra.Migrations
 {
     [DbContext(typeof(ImdbContext))]
-    [Migration("20201016145002_Migration02")]
+    [Migration("20201016185329_Migration02")]
     partial class Migration02
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,17 +112,20 @@ namespace Imdb.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("MovieId")
+                        .HasColumnName("movie_id")
                         .HasColumnType("integer");
 
                     b.Property<int>("UserId")
+                        .HasColumnName("user_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("VoteNote")
-                        .HasColumnName("vote_note")
+                    b.Property<int>("VoteScore")
+                        .HasColumnName("vote_score")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

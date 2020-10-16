@@ -6,8 +6,8 @@ namespace Imdb.Domain.Interfaces
 {
     public interface IServiceVote
     {
-        void RegisterVote(int movieId, int userId);
+        void RegisterVote(int movieId, int userId, int grade);
 
-        int AverageVotes(int movieId);
+        float AverageVotes(int movieId);
     }
 }

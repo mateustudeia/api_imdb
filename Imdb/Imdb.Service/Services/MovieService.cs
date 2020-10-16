@@ -14,6 +14,8 @@ namespace Imdb.Service
     {
         private readonly IRepositoryMovie _repositoryMovie;
 
+        private readonly IRepositoryVote _repositoryVote;
+
         public MovieService(IRepositoryMovie repositoryMovie)
         {
             _repositoryMovie = repositoryMovie;
@@ -24,10 +26,7 @@ namespace Imdb.Service
             _repositoryMovie.Save(movie);
             return movie.ConvertToMovie();
         }
-        public void RegisterVote(int movieId, int userId)
-        {
 
-        }
         public IEnumerable<MovieFilterModel> GetFilteredMovies(MovieFilterModel filter)
         {
             var movies = _repositoryMovie.GetAll();
@@ -65,8 +64,9 @@ namespace Imdb.Service
         public MovieDetailedModel GetMovieDetailedById(int id)
         {
             var movie = _repositoryMovie.GetById(id);
+            var averageVote = _repositoryVote.AverageVotes(id);
             return movie == null ? throw new InvalidDeleteException(ServicesConstants.ERR_GENERIC_MOVIE) 
-                : new MovieDetailedModel(movie);
+                : new MovieDetailedModel(movie, averageVote);
 
         }
     }

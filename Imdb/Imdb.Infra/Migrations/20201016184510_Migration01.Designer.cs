@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Imdb.Infra.Migrations
 {
     [DbContext(typeof(ImdbContext))]
-    [Migration("20201016022258_Migration01")]
+    [Migration("20201016184510_Migration01")]
     partial class Migration01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,6 +106,54 @@ namespace Imdb.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("user");
+                });
+
+            modelBuilder.Entity("Imdb.Domain.Entities.Vote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VoteScore")
+                        .HasColumnName("vote_score")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("movie_id")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("movie_id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("vote_user_movie");
+                });
+
+            modelBuilder.Entity("Imdb.Domain.Entities.Vote", b =>
+                {
+                    b.HasOne("Imdb.Domain.Entities.Movie", "Movie")
+                        .WithMany("VoteMovie")
+                        .HasForeignKey("movie_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Imdb.Domain.Entities.User", "User")
+                        .WithMany("VoteMovie")
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -9,5 +9,6 @@ namespace Imdb.Domain.Interfaces
     {
         void Register(Vote vote);
         int AverageVotes(int movieId);
+        IEnumerable<Vote> GetAll(int movieId);
     }
 }

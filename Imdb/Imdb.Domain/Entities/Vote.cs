@@ -6,7 +6,7 @@ namespace Imdb.Domain.Entities
 {
     public class Vote : BaseEntity<int>
     {
-        public int VoteNote { get; }
+        public int VoteScore { get; }
 
         public int UserId { get; set; }
         public int MovieId { get; set; }
@@ -15,6 +15,15 @@ namespace Imdb.Domain.Entities
         public virtual User User { get; }
         public virtual Movie Movie { get; }
         #endregion
+        public Vote() { }
+
+        public Vote(int movieId, int userId, int voteScote)
+        {
+            VoteScore = voteScote;
+            UserId = userId;
+            MovieId = movieId;
+        }
+
 
     }
 }
