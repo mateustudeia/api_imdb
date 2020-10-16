@@ -16,7 +16,9 @@ namespace Imdb.Domain.Entities
         public string Diretor { get; }
         public string Genero { get; }
         public string Atores { get; }
-        
+
+        public virtual ICollection<Vote> VoteMovie { get; set; }
+
         public Movie() { }
 
         public Movie(MovieModel movieModel) : base(movieModel.Id) 

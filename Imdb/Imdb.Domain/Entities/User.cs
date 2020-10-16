@@ -13,6 +13,7 @@ namespace Imdb.Domain.Entities
         public string Email { get; }
         public string Password { get; }
         public bool IsDeleted { get; private set; }
+        public virtual ICollection<Vote> VoteMovie { get; set; }
 
         public User(CreateUserModel user) : base(0)
         {
