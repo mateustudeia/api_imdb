@@ -1,4 +1,5 @@
-﻿using Imdb.Domain.Interfaces;
+﻿using Imdb.Domain.Entities;
+using Imdb.Domain.Interfaces;
 using Imdb.Domain.Models;
 using Imdb.Service.Exceptions;
 using Infra.Shared;
@@ -65,5 +66,8 @@ namespace Imdb.Service
                 .ToList();
             return users.ConvertToUsers();
         }
+
+        public User GetById(int id) => 
+            _repositoryUser.GetById(id);
     }
 }

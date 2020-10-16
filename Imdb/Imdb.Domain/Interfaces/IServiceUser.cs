@@ -1,4 +1,5 @@
-﻿using Imdb.Domain.Models;
+﻿using Imdb.Domain.Entities;
+using Imdb.Domain.Models;
 using System.Collections.Generic;
 
 namespace Imdb.Domain.Interfaces
@@ -9,5 +10,6 @@ namespace Imdb.Domain.Interfaces
         UserModel Update(UpdateUserModel userModel);
         void SoftDelete(int id);
         IEnumerable<UserModel> RecoverAll();
+        User GetById(int id);
     }
 }

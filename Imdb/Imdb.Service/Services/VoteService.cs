@@ -1,5 +1,6 @@
 ﻿using Imdb.Domain.Entities;
 using Imdb.Domain.Interfaces;
+using Imdb.Service.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,16 @@ namespace Imdb.Service.Services
     {
         private readonly IRepositoryVote _repositoryVote;
 
-        public VoteService(IRepositoryVote repositoryVote)
+        private readonly IRepositoryUser _repositoryUser;
+
+        private readonly IRepositoryMovie _repositoryMovie;
+
+        public VoteService(IRepositoryVote repositoryVote, IRepositoryUser repositoryUser, IRepositoryMovie repositoryMovie)
         {
             _repositoryVote = repositoryVote;
+            _repositoryUser = repositoryUser;
+            _repositoryMovie = repositoryMovie;
+
         }
 
         public float AverageVotes(int movieId)
@@ -30,8 +38,14 @@ namespace Imdb.Service.Services
 
         public void RegisterVote(int movieId, int userId, int grade)
         {
-            var vote = new Vote(movieId, userId, grade);
-            _repositoryVote.Register(vote);
+            if((_repositoryUser.GetById(userId) != null) && (_repositoryMovie.GetById(movieId)) != null)
+            {
+                var vote = new Vote(movieId, userId, grade);
+                _repositoryVote.Register(vote);
+
+            }
+
+            throw new InvalidVoteException(ServicesConstants.ERR_GENERIC_REGISTER_VOTE);
         }
     }
 }

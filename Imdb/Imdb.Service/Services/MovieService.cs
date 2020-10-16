@@ -16,9 +16,11 @@ namespace Imdb.Service
 
         private readonly IRepositoryVote _repositoryVote;
 
-        public MovieService(IRepositoryMovie repositoryMovie)
+        public MovieService(IRepositoryMovie repositoryMovie, IRepositoryVote repositoryVote)
         {
             _repositoryMovie = repositoryMovie;
+
+            _repositoryVote = repositoryVote;
         }
         public MovieModel Insert(MovieModel movieModel)
         {

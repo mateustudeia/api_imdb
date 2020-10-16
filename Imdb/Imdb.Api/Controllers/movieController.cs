@@ -13,9 +13,12 @@ namespace Imdb.Api.Controllers
 
         private readonly IServiceVote _serviceVote;
 
-        public MovieController(IServiceMovie serviceMovie) =>
+        public MovieController(IServiceMovie serviceMovie, IServiceVote serviceVote) 
+        {
             _serviceMovie = serviceMovie;
-
+            _serviceVote = serviceVote;
+        }
+            
         [HttpPost]
         public IActionResult Create([FromBody] MovieModel movieModel)
         {
