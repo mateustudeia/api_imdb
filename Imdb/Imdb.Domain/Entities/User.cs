@@ -13,8 +13,12 @@ namespace Imdb.Domain.Entities
         public string Email { get; }
         public string Password { get; }
         public bool IsDeleted { get; private set; }
+
+        #region Foreign Keys
         public virtual ICollection<Vote> VoteMovie { get; set; }
 
+        #endregion
+        #region Constructors
         public User(CreateUserModel user) : base(0)
         {
             Name = user.Name;
@@ -35,7 +39,7 @@ namespace Imdb.Domain.Entities
         }
 
         public User() { }
-
+        #endregion
         public void DeleteUser()
         {
             IsDeleted = true;

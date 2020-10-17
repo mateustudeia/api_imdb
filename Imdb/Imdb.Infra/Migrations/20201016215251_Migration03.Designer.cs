@@ -3,15 +3,17 @@ using System;
 using Imdb.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Imdb.Infra.Migrations
 {
     [DbContext(typeof(ImdbContext))]
-    partial class ImdbContextModelSnapshot : ModelSnapshot
+    [Migration("20201016215251_Migration03")]
+    partial class Migration03
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,21 +30,8 @@ namespace Imdb.Infra.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnName("creation_date")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Education")
-                        .HasColumnName("education")
-                        .HasColumnType("text");
-
                     b.Property<bool>("IsDisabled")
-                        .HasColumnName("is_disabled")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Profession")
-                        .HasColumnName("profession")
-                        .HasColumnType("text");
 
                     b.Property<int>("UserId")
                         .HasColumnName("user_id")

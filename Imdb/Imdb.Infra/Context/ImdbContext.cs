@@ -12,6 +12,7 @@ namespace Imdb.Infra.Context
         public DbSet<User> User { get; set; }
         public DbSet<Movie> Movie { get; set; }
         public DbSet<Vote> Vote { get; set; }
+        public DbSet<Administrator> Administrator { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseNpgsql("Host = localhost; Database = imdb_dotnet; Username = postgres; Password = postgres");
@@ -22,6 +23,7 @@ namespace Imdb.Infra.Context
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new MovieMap());
             modelBuilder.ApplyConfiguration(new VoteMap());
+            modelBuilder.ApplyConfiguration(new AdministratorMap());
 
         }
     }

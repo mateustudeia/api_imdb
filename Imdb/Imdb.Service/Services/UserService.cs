@@ -49,7 +49,7 @@ namespace Imdb.Service
             {
                 throw new InvalidDeleteException(ServicesConstants.ERR_GENERIC_USER_NOT_FOUND);
             }
-            if(user.IsDeleted)
+            if(!user.IsDeleted)
             {
                 user.DeleteUser();
                 _repositoryUser.Save(user);

@@ -51,6 +51,8 @@ namespace Imdb.Api
             services.AddScoped<IServiceMovie, MovieService>();
             services.AddScoped<IServiceVote, VoteService>();
             services.AddScoped<IRepositoryVote, VoteRepository>();
+            services.AddScoped<IRepositoryAdministrator, AdministratorRepository>();
+            services.AddScoped<IServiceAdministrator, AdministratorService>();
 
             services.AddControllers();
         }
