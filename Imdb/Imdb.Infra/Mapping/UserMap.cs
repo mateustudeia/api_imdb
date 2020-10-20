@@ -31,6 +31,10 @@ namespace Imdb.Infra.Mapping
                 .IsRequired()
                 .HasColumnName("email")
                 .HasColumnType("varchar(100)");
+            builder.Property(u => u.Role)
+                .IsRequired()
+                .HasColumnName("role")
+                .HasColumnType("varchar(20)");
             builder.Property(u => u.PasswordHash)
                 .IsRequired()
                 .HasColumnName("password_hash")
