@@ -25,6 +25,9 @@ namespace Imdb.Service
         public AdministratorModel Insert(AdministratorModel administratorModel)
         {
             var admin = administratorModel.ConvertToAdministratorEntity();
+
+            _serviceUser.ElectAdministrator(administratorModel.UserId);
+
             _repositoryAdministrator.Save(admin);
             return admin.ConvertToAdministrator();
         }

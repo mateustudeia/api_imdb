@@ -1,6 +1,7 @@
 ﻿using System;
 using Imdb.Domain.Interfaces;
 using Imdb.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Imdb.Api.Controllers
@@ -20,6 +21,7 @@ namespace Imdb.Api.Controllers
         }
             
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Create([FromBody] MovieModel movieModel)
         {
             try
@@ -35,6 +37,7 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpPost("getFilter")]
+        [AllowAnonymous]
         public IActionResult GetFilteredMovie([FromQuery] MovieFilterModel filter)
         {
             try
@@ -50,6 +53,7 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpGet("{idMovie}")]
+        [AllowAnonymous]
         public IActionResult GetDetailedMovie(int id)
         {
             try
@@ -65,6 +69,7 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpPost("registro")]
+        [Authorize(Roles = "User")]
         public IActionResult RegisterVote([FromQuery]int movieId, int userId, int voteScore)
         {
             try

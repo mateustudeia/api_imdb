@@ -7,6 +7,12 @@ namespace Imdb.Domain.Models
 {
     public class UserModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Email { get; set; }
+
         public UserModel(User user)
         {
             Id = user.Id;
@@ -15,11 +21,5 @@ namespace Imdb.Domain.Models
             DateOfBirth = user.DateOfBirth;
             Email = user.Email;
         }
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Gender { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string Email { get; set; }
-
     }
 }

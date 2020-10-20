@@ -1,6 +1,7 @@
 ﻿using System;
 using Imdb.Domain.Interfaces;
 using Imdb.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Imdb.Api.Controllers
@@ -14,21 +15,8 @@ namespace Imdb.Api.Controllers
         public UserController(IServiceUser serviceUser) =>
             _serviceUser = serviceUser;
 
-        [HttpPost]
-        public IActionResult Create([FromBody] CreateUserModel userModel)
-        {
-            try
-            {
-                var user = _serviceUser.Insert(userModel);
-
-                return Created($"/api/users/{user?.Id}", user);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
+        [HttpPut]
+        [Authorize]
         public IActionResult Update([FromBody] UpdateUserModel userModel)
         {
             try
@@ -44,6 +32,7 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete([FromRoute] int id)
         {
             try

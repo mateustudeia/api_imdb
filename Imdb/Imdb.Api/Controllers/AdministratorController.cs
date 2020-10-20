@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Imdb.Domain.Interfaces;
 using Imdb.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,7 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create([FromBody] AdministratorModel administratorModel)
         {
             try
@@ -39,6 +41,7 @@ namespace Imdb.Api.Controllers
             }
         }
         [HttpPut]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Update([FromBody] AdministratorModel administratorModel)
         {
             try
@@ -54,6 +57,7 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpPost("listUsers")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult ListUsers()
         {
             try

@@ -1,6 +1,7 @@
 ﻿using Imdb.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Imdb.Domain.Entities
@@ -11,13 +12,16 @@ namespace Imdb.Domain.Entities
         public string Gender { get; }
         public DateTime DateOfBirth { get; }
         public string Email { get; }
-        public string Password { get; }
+        public string Role { get; private set; }
         public bool IsDeleted { get; private set; }
+        public byte[] PasswordHash { get; private set; }
+        public byte[] PasswordSalt { get; private set; }
 
         #region Foreign Keys
         public virtual ICollection<Vote> VoteMovie { get; set; }
 
         #endregion
+
         #region Constructors
         public User(CreateUserModel user) : base(0)
         {
@@ -25,7 +29,7 @@ namespace Imdb.Domain.Entities
             Gender = user.Gender;
             DateOfBirth = user.DateOfBirth;
             Email = user.Email;
-            Password = user.Password;
+            Role = "User";
             IsDeleted = false;
         }
 
@@ -40,9 +44,17 @@ namespace Imdb.Domain.Entities
 
         public User() { }
         #endregion
-        public void DeleteUser()
-        {
+
+        public void DeleteUser() =>
             IsDeleted = true;
+
+        public void AdministratorRole() =>
+            Role = "Administrator";
+
+        public void EncryptPasswords(byte[] passwordHash, byte[] passwordSalt)
+        {
+            PasswordHash = passwordHash;
+            PasswordSalt = passwordSalt;
         }
     }
 }
