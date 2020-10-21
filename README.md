@@ -1,4 +1,4 @@
-# Desafio Pessoa Desenvolvedora .NET
+# Desafio .NET
 
 ## 🏗 O que fazer?
 
