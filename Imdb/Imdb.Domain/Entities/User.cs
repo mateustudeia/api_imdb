@@ -29,7 +29,7 @@ namespace Imdb.Domain.Entities
             Gender = user.Gender;
             DateOfBirth = user.DateOfBirth;
             Email = user.Email;
-            Role = "User";
+            Role = "user";
             IsDeleted = false;
         }
 
@@ -49,7 +49,7 @@ namespace Imdb.Domain.Entities
             IsDeleted = true;
 
         public void AdministratorRole() =>
-            Role = "Administrator";
+            Role = "administrator";
 
         public void EncryptPasswords(byte[] passwordHash, byte[] passwordSalt)
         {

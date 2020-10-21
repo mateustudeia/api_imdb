@@ -26,7 +26,7 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "administrator")]
         public IActionResult Create([FromBody] AdministratorModel administratorModel)
         {
             try
@@ -41,7 +41,7 @@ namespace Imdb.Api.Controllers
             }
         }
         [HttpPut]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "administrator")]
         public IActionResult Update([FromBody] AdministratorModel administratorModel)
         {
             try
@@ -57,7 +57,7 @@ namespace Imdb.Api.Controllers
         }
 
         [HttpPost("listUsers")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "administrator")]
         public IActionResult ListUsers()
         {
             try

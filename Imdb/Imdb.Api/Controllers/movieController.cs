@@ -21,7 +21,7 @@ namespace Imdb.Api.Controllers
         }
             
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create([FromBody] MovieModel movieModel)
         {
             try

@@ -68,7 +68,7 @@ namespace Imdb.Service
         {
             var users = _repositoryUser.GetAll()
                 .Where(u => !u.IsDeleted)
-                .Where(u => u.Role == "User")
+                .Where(u => u.Role == "user")
                 .ToList();
             return users.ConvertToUsers();
         }
@@ -88,7 +88,8 @@ namespace Imdb.Service
 
         public User Login(string email, string password)
         {
-            var user = _repositoryUser.GetAll().Where(u => u.IsDeleted != true).FirstOrDefault(u => u.Email == u.Email);
+            var user = _repositoryUser.GetAll()
+                .Where(u => u.IsDeleted != true).FirstOrDefault(u => u.Email == email);
 
             if (user == null)
             {
