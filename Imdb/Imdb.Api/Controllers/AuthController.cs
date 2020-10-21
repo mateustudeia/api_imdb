@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using Imdb.Api.Helpers;
 using Imdb.Domain.Interfaces;
@@ -33,9 +34,9 @@ namespace Imdb.Api.Controllers
                 _serviceUser.Register(createUserModel);
                 return HttpResponseHelper.Create(HttpStatusCode.Created, ApiConstants.MSG_REGISTER_SUCCESS);
             }
-            catch
+            catch(Exception ex)
             {
-                return HttpResponseHelper.Create(HttpStatusCode.InternalServerError, ApiConstants.ERR_GENERIC);
+                return HttpResponseHelper.Create(HttpStatusCode.InternalServerError, ApiConstants.ERR_GENERIC, ex);
             }
         }
         [HttpPost("login")]

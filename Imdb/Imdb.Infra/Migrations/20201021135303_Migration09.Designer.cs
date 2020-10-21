@@ -3,15 +3,17 @@ using System;
 using Imdb.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Imdb.Infra.Migrations
 {
     [DbContext(typeof(ImdbContext))]
-    partial class ImdbContextModelSnapshot : ModelSnapshot
+    [Migration("20201021135303_Migration09")]
+    partial class Migration09
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,16 +133,6 @@ namespace Imdb.Infra.Migrations
                         .IsRequired()
                         .HasColumnName("name")
                         .HasColumnType("varchar(100)");
-
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnName("password_hash")
-                        .HasColumnType("bytea");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnName("password_salt")
-                        .HasColumnType("bytea");
 
                     b.Property<string>("Role")
                         .IsRequired()

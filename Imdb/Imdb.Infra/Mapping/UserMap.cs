@@ -37,12 +37,10 @@ namespace Imdb.Infra.Mapping
                 .HasColumnType("varchar(20)");
             builder.Property(u => u.PasswordHash)
                 .IsRequired()
-                .HasColumnName("password_hash")
-                .HasColumnType("varchar(100)");
+                .HasColumnName("password_hash");
             builder.Property(u => u.PasswordSalt)
                 .IsRequired()
-                .HasColumnName("password_salt")
-                .HasColumnType("varchar(100)");
+                .HasColumnName("password_salt");
             builder.Property(u => u.IsDeleted)
                 .IsRequired()
                 .HasColumnName("is_deleted");
