@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
+using Imdb.Api.Helpers;
 using Imdb.Domain.Interfaces;
 using Imdb.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Imdb.Api.Controllers
@@ -33,11 +31,13 @@ namespace Imdb.Api.Controllers
             {
                 var admin = _serviceAdministrator.Insert(administratorModel);
 
-                return Ok("Este usuário agora é um administrador");
+                return HttpResponseHelper.Create(HttpStatusCode.Created, ApiConstants.MSG_REGISTER_ADMIN_SUCCESS, admin);
+
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return HttpResponseHelper.Create(HttpStatusCode.BadRequest, ApiConstants.ERR_GENERIC, ex);
+
             }
         }
         [HttpPut]
@@ -48,11 +48,13 @@ namespace Imdb.Api.Controllers
             {
                 var user = _serviceAdministrator.Update(administratorModel);
 
-                return NoContent();
+                return HttpResponseHelper.Create(HttpStatusCode.Created, ApiConstants.MSG_GENERIC_UPDATE_SUCCESS, user);
+
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return HttpResponseHelper.Create(HttpStatusCode.BadRequest, ApiConstants.ERR_GENERIC, ex);
+
             }
         }
 
@@ -64,11 +66,12 @@ namespace Imdb.Api.Controllers
             {
                 var users = _serviceUser.RecoverAll();
 
-                return Ok(users);
+                return HttpResponseHelper.Create(HttpStatusCode.Created, ApiConstants.MSG_GENERIC_SUCCESS, users);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return HttpResponseHelper.Create(HttpStatusCode.InternalServerError, ApiConstants.ERR_GENERIC, ex);
+
             }
         }
 

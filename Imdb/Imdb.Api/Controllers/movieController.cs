@@ -21,7 +21,7 @@ namespace Imdb.Api.Controllers
         }
             
         [HttpPost]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "administrator")]
         public IActionResult Create([FromBody] MovieModel movieModel)
         {
             try
@@ -68,8 +68,8 @@ namespace Imdb.Api.Controllers
             }
         }
 
-        [HttpPost("registro")]
-        [Authorize(Roles = "User")]
+        [HttpPost("registerVote")]
+        [Authorize(Roles = "user")]
         public IActionResult RegisterVote([FromQuery]int movieId, int userId, int voteScore)
         {
             try

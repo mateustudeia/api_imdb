@@ -4,7 +4,6 @@ using System.Net;
 using Imdb.Api.Helpers;
 using Imdb.Domain.Interfaces;
 using Imdb.Domain.Models;
-using Imdb.Service.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

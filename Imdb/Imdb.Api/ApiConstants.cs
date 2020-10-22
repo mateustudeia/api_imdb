@@ -13,6 +13,7 @@ namespace Imdb.Api
 
         public const string MSG_LOGIN_SUCCESS = "Login relizado com sucesso.";
         public const string MSG_REGISTER_SUCCESS = "Cadastro relizado com sucesso.";
+        public const string MSG_REGISTER_ADMIN_SUCCESS = "Usuário cadastrado como administrador";
         public const string MSG_GENERIC_GET_SUCCESS = "Dados consultados com sucesso.";
         public const string MSG_GENERIC_UPDATE_SUCCESS = "Dados atualizados com sucesso.";
         public const string MSG_GENERIC_SUCCESS = "Operação realizada com sucesso.";
