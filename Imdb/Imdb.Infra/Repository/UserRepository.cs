@@ -7,21 +7,25 @@ using System.Text;
 
 namespace Imdb.Infra.Repository
 {
-    public class UserRepository : BaseRepository<User, int>, IRepositoryUser
+    public class UserRepository : IRepositoryUser
     {
-        public UserRepository(ImdbContext imdbContext) : base(imdbContext) {}
+        public readonly IRepositoryBase<User> _repositoryBase;
 
+        public UserRepository(IRepositoryBase<User> repositoryBase) 
+        {
+            _repositoryBase = repositoryBase;
+        }
         public void Save(User obj)
         {
             if (obj.Id == 0)
-                base.Insert(obj);
+                _repositoryBase.Insert(obj);
             else
-                base.Update(obj);
+                _repositoryBase.Update(obj);
         }
         public User GetById(int id) =>
-            base.Select(id);
+            _repositoryBase.Select(id);
         public IEnumerable<User> GetAll() =>
-            base.Select();
+            _repositoryBase.Select();
 
 
     }

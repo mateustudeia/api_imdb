@@ -8,16 +8,21 @@ using System.Text;
 
 namespace Imdb.Infra.Repository
 {
-    public class VoteRepository : BaseRepository<Vote, int>, IRepositoryVote
+    public class VoteRepository : IRepositoryVote
     {
-        public VoteRepository(ImdbContext imdbContext) : base(imdbContext) { }
+        IRepositoryBase<Vote> _repositoryBase;
+
+        public VoteRepository(IRepositoryBase<Vote> repositoryBase)
+        {
+            _repositoryBase = repositoryBase;
+        }
         public void Register(Vote vote)
         {
-            base.Insert(vote);
+            _repositoryBase.Insert(vote);
         }
 
         public IEnumerable<Vote> GetAll(int movieId) =>
-            base.Select().Where(v => v.MovieId == movieId);
+            _repositoryBase.Select().Where(v => v.MovieId == movieId);
 
         public int AverageVotes(int movieId)
         {

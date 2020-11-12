@@ -7,20 +7,25 @@ using System.Text;
 
 namespace Imdb.Infra.Repository
 {
-    public class AdministratorRepository : BaseRepository<Administrator, int>, IRepositoryAdministrator
+    public class AdministratorRepository : IRepositoryAdministrator
     {
-        public AdministratorRepository(ImdbContext imdbContext) : base(imdbContext) {}
+        public readonly IRepositoryBase<Administrator> _repositoryBase;
+
+        public AdministratorRepository(IRepositoryBase<Administrator> repositoryBase)
+        {
+            _repositoryBase = repositoryBase;
+        }
 
         public void Save(Administrator obj)
         {
             if (obj.Id == 0)
-                base.Insert(obj);
+                _repositoryBase.Insert(obj);
             else
-                base.Update(obj);
+                _repositoryBase.Update(obj);
         }
         
         public Administrator GetById(int id) =>
-            base.Select(id);
+            _repositoryBase.Select(id);
 
     }
 }

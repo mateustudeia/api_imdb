@@ -7,12 +7,17 @@ using System.Text;
 
 namespace Imdb.Infra.Repository
 {
-    public class MovieRepository : BaseRepository<Movie, int>, IRepositoryMovie
+    public class MovieRepository : IRepositoryMovie
     {
-        public MovieRepository(ImdbContext imdbContext) : base(imdbContext) { }
+        public readonly IRepositoryBase<Movie> _repositoryBase;
+
+        public MovieRepository(IRepositoryBase<Movie> repositoryBase)
+        {
+            _repositoryBase = repositoryBase;
+        }
         public void Save(Movie obj)
         {
-            base.Insert(obj);
+            _repositoryBase.Insert(obj);
         }
         public void Vote(int movieId, int userId)
         {
@@ -20,11 +25,11 @@ namespace Imdb.Infra.Repository
         }
         public Movie GetById(int id)
         {
-            return Select(id);
+            return _repositoryBase.Select(id);
         }
         public IEnumerable<Movie> GetAll()
         {
-            return Select();
+            return _repositoryBase.Select();
         }
     }
 }
