@@ -1,4 +1,5 @@
 ﻿using Imdb.Domain.Entities;
+using Imdb.Domain.Interfaces;
 using Imdb.Infra.Context;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace Imdb.Infra.Repository
 {
-    public class BaseRepository<TEntity, TKeyType> where TEntity : BaseEntity<TKeyType>
+    public class BaseRepository<TEntity, TKeyType> where TEntity : BaseEntity<TKeyType>, IRepositoryBase<TEntity>
     {
         protected readonly ImdbContext _imdbContext;
 
