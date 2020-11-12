@@ -10,6 +10,7 @@ namespace Imdb.Infra.Repository
     public class UserRepository : BaseRepository<User, int>, IRepositoryUser
     {
         public UserRepository(ImdbContext imdbContext) : base(imdbContext) {}
+
         public void Save(User obj)
         {
             if (obj.Id == 0)
