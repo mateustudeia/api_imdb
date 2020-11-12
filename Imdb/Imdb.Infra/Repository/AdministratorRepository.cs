@@ -9,7 +9,7 @@ namespace Imdb.Infra.Repository
 {
     public class AdministratorRepository : BaseRepository<Administrator, int>, IRepositoryAdministrator
     {
-        public AdministratorRepository(ImdbContext imdbContext) : base(imdbContext) {}
+        public AdministratorRepository(ImdbContext imdbContext) : base(imdbContext) { }
 
         public void Save(Administrator obj)
         {

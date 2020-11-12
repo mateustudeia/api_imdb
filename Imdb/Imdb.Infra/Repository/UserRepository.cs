@@ -17,10 +17,8 @@ namespace Imdb.Infra.Repository
             else
                 base.Update(obj);
         }
-
         public User GetById(int id) =>
             base.Select(id);
-
         public IEnumerable<User> GetAll() =>
             base.Select();
 

@@ -10,6 +10,7 @@ namespace Imdb.Infra.Repository
     public class MovieRepository : BaseRepository<Movie, int>, IRepositoryMovie
     {
         public MovieRepository(ImdbContext imdbContext) : base(imdbContext) { }
+
         public void Save(Movie obj)
         {
             base.Insert(obj);

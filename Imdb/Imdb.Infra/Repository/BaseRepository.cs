@@ -1,4 +1,5 @@
 ﻿using Imdb.Domain.Entities;
+using Imdb.Domain.Interfaces;
 using Imdb.Infra.Context;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
