@@ -8,6 +8,7 @@ namespace Infra.Shared
 {
     public static class UserMapper
     {
+        // Extensions Methods
         public static User ConvertToEntity(this CreateUserModel userModel) =>
             new User(userModel);
 

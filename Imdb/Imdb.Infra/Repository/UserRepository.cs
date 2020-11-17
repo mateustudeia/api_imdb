@@ -9,23 +9,23 @@ namespace Imdb.Infra.Repository
 {
     public class UserRepository : IRepositoryUser
     {
-        public readonly IRepositoryBase<User> _repositoryBase;
+        public readonly IRepository<User> _repository;
 
-        public UserRepository(IRepositoryBase<User> repositoryBase) 
+        public UserRepository(IRepository<User> repository) 
         {
-            _repositoryBase = repositoryBase;
+            _repository = repository;
         }
         public void Save(User obj)
         {
             if (obj.Id == 0)
-                _repositoryBase.Insert(obj);
+                _repository.Insert(obj);
             else
-                _repositoryBase.Update(obj);
+                _repository.Update(obj);
         }
         public User GetById(int id) =>
-            _repositoryBase.Select(id);
+            _repository.Select(id);
         public IEnumerable<User> GetAll() =>
-            _repositoryBase.Select();
+            _repository.Select();
 
 
     }

@@ -9,23 +9,23 @@ namespace Imdb.Infra.Repository
 {
     public class AdministratorRepository : IRepositoryAdministrator
     {
-        public readonly IRepositoryBase<Administrator> _repositoryBase;
+        public readonly IRepository<Administrator> _repository;
 
-        public AdministratorRepository(IRepositoryBase<Administrator> repositoryBase)
+        public AdministratorRepository(IRepository<Administrator> repository)
         {
-            _repositoryBase = repositoryBase;
+            _repository = repository;
         }
 
         public void Save(Administrator obj)
         {
             if (obj.Id == 0)
-                _repositoryBase.Insert(obj);
+                _repository.Insert(obj);
             else
-                _repositoryBase.Update(obj);
+                _repository.Update(obj);
         }
         
         public Administrator GetById(int id) =>
-            _repositoryBase.Select(id);
+            _repository.Select(id);
 
     }
 }

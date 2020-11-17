@@ -9,15 +9,15 @@ namespace Imdb.Infra.Repository
 {
     public class MovieRepository : IRepositoryMovie
     {
-        public readonly IRepositoryBase<Movie> _repositoryBase;
+        public readonly IRepository<Movie> _repository;
 
-        public MovieRepository(IRepositoryBase<Movie> repositoryBase)
+        public MovieRepository(IRepository<Movie> repository)
         {
-            _repositoryBase = repositoryBase;
+            _repository = repository;
         }
         public void Save(Movie obj)
         {
-            _repositoryBase.Insert(obj);
+            _repository.Insert(obj);
         }
         public void Vote(int movieId, int userId)
         {
@@ -25,11 +25,11 @@ namespace Imdb.Infra.Repository
         }
         public Movie GetById(int id)
         {
-            return _repositoryBase.Select(id);
+            return _repository.Select(id);
         }
         public IEnumerable<Movie> GetAll()
         {
-            return _repositoryBase.Select();
+            return _repository.Select();
         }
     }
 }

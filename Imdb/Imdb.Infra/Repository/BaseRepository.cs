@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Imdb.Infra.Repository
 {
-    public class BaseRepository<TEntity, TKeyType> where TEntity : BaseEntity<TKeyType>, IRepositoryBase<TEntity>
+    public class BaseRepository<TEntity, TKeyType> where TEntity : BaseEntity<TKeyType>, IRepository<TEntity>
     {
         protected readonly ImdbContext _imdbContext;
 

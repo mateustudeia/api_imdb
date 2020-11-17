@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Imdb.Domain.Interfaces
 {
-    public interface IRepositoryBase<TEntity>
+    public interface IRepository<TEntity>
     {
         void Insert(TEntity obj);
         void Update(TEntity obj);
