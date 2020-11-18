@@ -9,9 +9,9 @@ namespace Imdb.Infra.Repository
 {
     public class AdministratorRepository : IRepositoryAdministrator
     {
-        public readonly IRepository<Administrator> _repository;
+        private readonly IRepository<Administrator, int> _repository;
 
-        public AdministratorRepository(IRepository<Administrator> repository)
+        public AdministratorRepository(IRepository<Administrator, int> repository)
         {
             _repository = repository;
         }

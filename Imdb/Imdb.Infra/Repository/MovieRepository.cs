@@ -9,9 +9,9 @@ namespace Imdb.Infra.Repository
 {
     public class MovieRepository : IRepositoryMovie
     {
-        public readonly IRepository<Movie> _repository;
+        private readonly IRepository<Movie, int> _repository;
 
-        public MovieRepository(IRepository<Movie> repository)
+        public MovieRepository(IRepository<Movie, int> repository)
         {
             _repository = repository;
         }

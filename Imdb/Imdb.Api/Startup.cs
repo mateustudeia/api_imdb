@@ -1,3 +1,4 @@
+using Imdb.Domain.Entities;
 using Imdb.Domain.Interfaces;
 using Imdb.Infra.Context;
 using Imdb.Infra.Repository;
@@ -57,13 +58,22 @@ namespace Imdb.Api
                 c.IgnoreObsoleteActions();
                 c.IgnoreObsoleteActions();
             });
-            services.AddScoped<IServiceUser, UserService>();
+
+            services.AddScoped<IRepository<User, int>, BaseRepository<User, int>>();
             services.AddScoped<IRepositoryUser, UserRepository>();
-            services.AddScoped<IRepositoryMovie, MovieRepository>();
-            services.AddScoped<IServiceMovie, MovieService>();
-            services.AddScoped<IServiceVote, VoteService>();
+
+            services.AddScoped<IRepository<Vote, int>, BaseRepository<Vote, int>>();
             services.AddScoped<IRepositoryVote, VoteRepository>();
+
+            services.AddScoped<IRepository<Movie, int>, BaseRepository<Movie, int>>();
+            services.AddScoped<IRepositoryMovie, MovieRepository>();
+
+            services.AddScoped<IRepository<Administrator, int>, BaseRepository<Administrator, int>>();
             services.AddScoped<IRepositoryAdministrator, AdministratorRepository>();
+
+            services.AddScoped<IServiceUser, UserService>();
+            services.AddScoped<IServiceVote, VoteService>();
+            services.AddScoped<IServiceMovie, MovieService>();
             services.AddScoped<IServiceAdministrator, AdministratorService>();
 
             services.AddControllers();
