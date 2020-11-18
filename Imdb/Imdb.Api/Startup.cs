@@ -59,16 +59,16 @@ namespace Imdb.Api
                 c.IgnoreObsoleteActions();
             });
 
-            services.AddScoped<IRepository<User, int>, BaseRepository<User, int>>();
+            services.AddScoped<IRepository<User, int>, Repository<User, int>>();
             services.AddScoped<IRepositoryUser, UserRepository>();
 
-            services.AddScoped<IRepository<Vote, int>, BaseRepository<Vote, int>>();
+            services.AddScoped<IRepository<Vote, int>, Repository<Vote, int>>();
             services.AddScoped<IRepositoryVote, VoteRepository>();
 
-            services.AddScoped<IRepository<Movie, int>, BaseRepository<Movie, int>>();
+            services.AddScoped<IRepository<Movie, int>, Repository<Movie, int>>();
             services.AddScoped<IRepositoryMovie, MovieRepository>();
 
-            services.AddScoped<IRepository<Administrator, int>, BaseRepository<Administrator, int>>();
+            services.AddScoped<IRepository<Administrator, int>, Repository<Administrator, int>>();
             services.AddScoped<IRepositoryAdministrator, AdministratorRepository>();
 
             services.AddScoped<IServiceUser, UserService>();
