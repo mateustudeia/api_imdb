@@ -1,9 +1,8 @@
 using Imdb.Domain.Entities;
 using Imdb.Domain.Interfaces;
-using Imdb.Infra.Context;
-using Imdb.Infra.Repository;
+using Imdb.Infra.Data.Context;
+using Imdb.Infra.Data.Repository;
 using Imdb.Service;
-using Imdb.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
