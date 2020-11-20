@@ -13,7 +13,7 @@ namespace Imdb.Infra.Data.Repository
     {
         protected readonly ImdbContext _imdbContext;
 
-        public Repository(ImdbContext imdbContext, IRepository<TEntity, TKeyType> repository)
+        public Repository(ImdbContext imdbContext)
         {
             _imdbContext = imdbContext;
         }
