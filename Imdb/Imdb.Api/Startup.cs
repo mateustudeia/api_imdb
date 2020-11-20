@@ -1,18 +1,9 @@
-using Imdb.Domain.Entities;
-using Imdb.Domain.Interfaces;
-using Imdb.Infra.Data.Context;
-using Imdb.Infra.Data.Repository;
-using Imdb.Service;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Imdb.Infra.CrossCoutting.InversionOfControl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerUI;
-using System.Text;
 
 namespace Imdb.Api
 {
@@ -28,51 +19,16 @@ namespace Imdb.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ImdbContext>();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                    };
-                });
             services.AddMvc(config =>
             {
                 config.EnableEndpointRouting = false;
             });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1",
-                    new OpenApiInfo
-                    {
-                        Title = "IMDb API",
-                        Version = "v1",
-                        Description = "API REST criada com  ASP.NET Core 3.1",
-                    });
-                c.IgnoreObsoleteActions();
-                c.IgnoreObsoleteActions();
-            });
-
-            services.AddScoped<IRepository<User, int>, Repository<User, int>>();
-            services.AddScoped<IRepository<Vote, int>, Repository<Vote, int>>();
-            services.AddScoped<IRepository<Movie, int>, Repository<Movie, int>>();
-            services.AddScoped<IRepository<Administrator, int>, Repository<Administrator, int>>();
-            
-            services.AddScoped<IRepositoryUser, UserRepository>();
-            services.AddScoped<IRepositoryVote, VoteRepository>();
-            services.AddScoped<IRepositoryAdministrator, AdministratorRepository>();
-            services.AddScoped<IRepositoryMovie, MovieRepository>();
-            
-            services.AddScoped<IServiceUser, UserService>();
-            services.AddScoped<IServiceVote, VoteService>();
-            services.AddScoped<IServiceMovie, MovieService>();
-            services.AddScoped<IServiceAdministrator, AdministratorService>();
-
+            services.AddJwtDependency();
+            services.AddSwaggerDependency();
+            services.AddPostgreSqlDependency();
+            services.AddServiceDependency();
+            services.AddRepositoryDependency();
             services.AddControllers();
         }
 
@@ -82,23 +38,14 @@ namespace Imdb.Api
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "IMDb API");
-                c.DocumentTitle = "IMDb API";
-                c.DocExpansion(DocExpansion.List);
-            });
-
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             //app.UseMvc();
             //app.UseHttpsRedirection();
 
             app.UseRouting();
 
-
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseSwaggerDependency();
+            app.UseJwtDependency();
 
             app.UseEndpoints(endpoints =>
             {

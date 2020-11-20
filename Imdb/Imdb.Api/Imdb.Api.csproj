@@ -17,21 +17,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
     <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Imdb.Domain\Imdb.Domain.csproj" />
+    <ProjectReference Include="..\Imdb.Infra.CrossCoutting\Imdb.Infra.CrossCoutting.csproj" />
     <ProjectReference Include="..\Imdb.Infra.Data\Imdb.Infra.Data.csproj" />
     <ProjectReference Include="..\Imdb.Service\Imdb.Service.csproj" />
   </ItemGroup>
