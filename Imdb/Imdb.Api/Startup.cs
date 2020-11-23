@@ -24,7 +24,7 @@ namespace Imdb.Api
                 config.EnableEndpointRouting = false;
             });
 
-            services.AddJwtDependency();
+            services.AddJwtDependency(Configuration);
             services.AddSwaggerDependency();
             services.AddPostgreSqlDependency();
             services.AddServiceDependency();

@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 
 namespace Imdb.Infra.CrossCoutting.InversionOfControl
 {
     public static class JwtDependency
     {
-        public static void AddJwtDependency(this IServiceCollection services)
+        public static void AddJwtDependency(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -17,7 +18,7 @@ namespace Imdb.Infra.CrossCoutting.InversionOfControl
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey
-                            (Encoding.ASCII.GetBytes(CrossCuttingConstants.SECRET_KEY_HASH)),
+                            (Encoding.ASCII.GetBytes(configuration.GetSection("AppSettings:Token").Value)),
                         ValidateIssuer = false,
                         ValidateAudience = false,
                     };
