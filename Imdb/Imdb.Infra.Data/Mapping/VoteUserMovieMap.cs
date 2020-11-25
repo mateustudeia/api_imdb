@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Imdb.Infra.Data.Mapping
 {
-    public class VoteMap : IEntityTypeConfiguration<Vote>
+    public class VoteUserMovieMap : IEntityTypeConfiguration<VoteUserMovie>
     {
-        public void Configure(EntityTypeBuilder<Vote> builder)
+        public void Configure(EntityTypeBuilder<VoteUserMovie> builder)
         {
             builder.ToTable("vote_user_movie");
 
-            builder.HasKey(v => v.Id);
+            builder.HasKey(v => new { v.MovieId, v.UserId });
 
             builder
                 .Property(v => v.Id)
@@ -19,28 +19,25 @@ namespace Imdb.Infra.Data.Mapping
             builder
                 .Property(v => v.VoteScore)
                 .HasColumnName("vote_score");
-            builder
-                .HasOne(v => v.User)
-                .WithMany(u => u.VoteMovie)
-                .HasForeignKey(v => v.UserId);
 
             builder
                 .Property(v => v.UserId)
                 .HasColumnName("user_id");
 
             builder
-                .HasOne(v => v.Movie)
-                .WithMany(v => v.VoteMovie)
-                .HasForeignKey(v => v.MovieId);
-
-            builder
                 .Property(v => v.MovieId)
                 .HasColumnName("movie_id");
 
 
+            builder
+               .HasOne(v => v.User)
+               .WithMany(u => u.VoteUserMovie)
+               .HasForeignKey(v => v.UserId);
 
-
-
+            builder
+               .HasOne(v => v.Movie)
+               .WithMany(m => m.VoteMovie)
+               .HasForeignKey(v => v.MovieId);
         }
     }
 }

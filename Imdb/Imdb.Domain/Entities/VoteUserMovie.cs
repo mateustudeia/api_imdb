@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Imdb.Domain.Entities
 {
-    public class Vote : BaseEntity<int>
+    public class VoteUserMovie : BaseEntity<int>
     {
         public int VoteScore { get; }
 
@@ -15,9 +15,9 @@ namespace Imdb.Domain.Entities
         public virtual User User { get; }
         public virtual Movie Movie { get; }
         #endregion
-        public Vote() { }
+        public VoteUserMovie() { }
 
-        public Vote(int movieId, int userId, int voteScote)
+        public VoteUserMovie(int movieId, int userId, int voteScote)
         {
             VoteScore = voteScote;
             UserId = userId;

@@ -17,7 +17,7 @@ namespace Imdb.Domain.Entities
         public string Genero { get; }
         public string Atores { get; }
 
-        public virtual ICollection<Vote> VoteMovie { get; set; }
+        public virtual ICollection<VoteUserMovie> VoteMovie { get; set; }
 
         public Movie() { }
 

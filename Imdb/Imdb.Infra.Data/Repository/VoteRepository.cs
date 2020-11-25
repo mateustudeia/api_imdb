@@ -10,18 +10,18 @@ namespace Imdb.Infra.Data.Repository
 {
     public class VoteRepository : IRepositoryVote
     {
-        private  IRepository<Vote,int> _repository;
+        private  IRepository<VoteUserMovie,int> _repository;
 
-        public VoteRepository(IRepository<Vote, int> repository)
+        public VoteRepository(IRepository<VoteUserMovie, int> repository)
         {
             _repository = repository;
         }
-        public void Register(Vote vote)
+        public void Register(VoteUserMovie vote)
         {
             _repository.Insert(vote);
         }
 
-        public IEnumerable<Vote> GetAll(int movieId) =>
+        public IEnumerable<VoteUserMovie> GetAll(int movieId) =>
             _repository.Select().Where(v => v.MovieId == movieId);
 
         public int AverageVotes(int movieId)

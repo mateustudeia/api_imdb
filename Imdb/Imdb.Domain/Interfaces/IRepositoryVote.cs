@@ -7,8 +7,8 @@ namespace Imdb.Domain.Interfaces
 {
     public interface IRepositoryVote
     {
-        void Register(Vote vote);
+        void Register(VoteUserMovie vote);
         int AverageVotes(int movieId);
-        IEnumerable<Vote> GetAll(int movieId);
+        IEnumerable<VoteUserMovie> GetAll(int movieId);
     }
 }

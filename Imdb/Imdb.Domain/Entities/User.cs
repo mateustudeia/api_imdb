@@ -18,7 +18,7 @@ namespace Imdb.Domain.Entities
         public byte[] PasswordSalt { get; private set; }
 
         #region Foreign Keys
-        public virtual ICollection<Vote> VoteMovie { get; set; }
+        public virtual ICollection<VoteUserMovie> VoteUserMovie { get; set; }
 
         #endregion
 

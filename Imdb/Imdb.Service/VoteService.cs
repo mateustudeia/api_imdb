@@ -37,7 +37,7 @@ namespace Imdb.Service
         {
             if((_repositoryUser.GetById(userId) != null) && (_repositoryMovie.GetById(movieId)) != null)
             {
-                var vote = new Vote(movieId, userId, grade);
+                var vote = new VoteUserMovie(movieId, userId, grade);
                 _repositoryVote.Register(vote);
 
             }
