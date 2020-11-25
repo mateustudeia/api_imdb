@@ -28,16 +28,6 @@ namespace Imdb.Infra.Data.Mapping
                 .Property(v => v.MovieId)
                 .HasColumnName("movie_id");
 
-
-            builder
-               .HasOne(v => v.User)
-               .WithMany(u => u.VoteUserMovie)
-               .HasForeignKey(v => v.UserId);
-
-            builder
-               .HasOne(v => v.Movie)
-               .WithMany(m => m.VoteMovie)
-               .HasForeignKey(v => v.MovieId);
         }
     }
 }
