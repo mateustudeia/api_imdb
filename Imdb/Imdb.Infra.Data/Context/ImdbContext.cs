@@ -17,10 +17,7 @@ namespace Imdb.Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("imdb");
-            modelBuilder.ApplyConfiguration(new UserMap());
-            modelBuilder.ApplyConfiguration(new MovieMap());
-            modelBuilder.ApplyConfiguration(new VoteUserMovieMap());
-            modelBuilder.ApplyConfiguration(new AdministratorMap());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ImdbContext).Assembly);
 
         }
     }

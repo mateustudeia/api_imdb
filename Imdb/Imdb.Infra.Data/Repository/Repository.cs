@@ -1,11 +1,7 @@
 ﻿using Imdb.Domain.Entities;
 using Imdb.Domain.Interfaces;
 using Imdb.Infra.Data.Context;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Imdb.Infra.Data.Repository
 {

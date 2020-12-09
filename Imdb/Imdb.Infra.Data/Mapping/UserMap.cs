@@ -9,38 +9,39 @@ namespace Imdb.Infra.Data.Mapping
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("user");
-
             builder.HasKey(u => u.Id);
-
             builder.Property(u => u.Id)
-                .IsRequired()
-                .HasColumnName("id");
+                .HasColumnName("id")
+                .IsRequired();
             builder.Property(u => u.Name)
-                .IsRequired()
                 .HasColumnName("name")
-                .HasColumnType("varchar(100)");
+                .HasColumnType("VARCHAR(100)")
+                .IsRequired();
             builder.Property(u => u.Gender)
                 .HasColumnName("gender")
-                .HasColumnType("varchar(20)");
+                .HasColumnType("CHAR(20)");
             builder.Property(u => u.DateOfBirth)
-                .HasColumnName("date_of_birth");
+                .HasColumnName("date_of_birth")
+                .IsRequired();
             builder.Property(u => u.Email)
-                .IsRequired()
                 .HasColumnName("email")
-                .HasColumnType("varchar(100)");
+                .HasColumnType("CHAR(100)")
+                .IsRequired();
             builder.Property(u => u.Role)
-                .IsRequired()
                 .HasColumnName("role")
-                .HasColumnType("varchar(20)");
+                .HasColumnType("CHAR(20)")
+                .IsRequired();
             builder.Property(u => u.PasswordHash)
-                .IsRequired()
-                .HasColumnName("password_hash");
+                .HasColumnName("password_hash")
+                .IsRequired();
             builder.Property(u => u.PasswordSalt)
-                .IsRequired()
-                .HasColumnName("password_salt");
+                .HasColumnName("password_salt")
+                .IsRequired();
             builder.Property(u => u.IsDeleted)
-                .IsRequired()
-                .HasColumnName("is_deleted");
+                .HasColumnName("is_deleted")
+                .IsRequired();
+
+            builder.HasIndex(u => u.Email).HasName("idx_user_email");
         }
     }
 }
