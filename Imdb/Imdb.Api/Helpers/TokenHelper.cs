@@ -32,8 +32,12 @@ namespace Imdb.Api.Helpers
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+
+            var token = "Bearer " + tokenHandler.WriteToken(securityToken);
+
+
+            return token;
         }
 
     }

@@ -58,7 +58,7 @@ namespace Imdb.Api.Controllers
             }
         }
 
-        [HttpPost("listUsers")]
+        [HttpGet("listUsers")]
         [Authorize(Roles = "administrator")]
         public IActionResult ListUsers()
         {

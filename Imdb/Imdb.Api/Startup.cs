@@ -25,7 +25,7 @@ namespace Imdb.Api
             });
 
             services.AddJwtDependency(Configuration);
-            services.AddSwaggerDependency();
+            services.AddSwaggerDependency(Configuration);
             services.AddPostgreSqlDependency();
             services.AddServiceDependency();
             services.AddRepositoryDependency();

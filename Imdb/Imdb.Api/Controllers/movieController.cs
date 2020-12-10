@@ -36,7 +36,7 @@ namespace Imdb.Api.Controllers
             }
         }
 
-        [HttpPost("getFilter")]
+        [HttpGet("getFilter")]
         [AllowAnonymous]
         public IActionResult GetFilteredMovie([FromQuery] MovieFilterModel filter)
         {
